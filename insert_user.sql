@@ -1,0 +1,1 @@
+INSERT INTO `accounts` (`id`, `username`, `password`) VALUES (2, 'rohan', '1234');
