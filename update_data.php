@@ -26,15 +26,30 @@
   $product_id = clean_input($_SESSION['product_id']);
   $supplier_id = clean_input($_SESSION['supplier_id']);
 
+  // unset session variables
+  unset($_SESSION['product_id']);
+  unset($_SESSION['supplier_id']);
+  unset($_SESSION['product_name']);
+  unset($_SESSION['product_price']);
+  unset($_SESSION['quantity']);
+  unset($_SESSION['product_status']);
+
+  // data validation on POST data
+  if (empty($_POST['product_name']) && empty($_POST['quantity']) && empty($_POST['price']) && empty($_POST['status'])) {
+    $_SESSION['update_status'] = "No data entered";
+    header('Location: update.php');
+  } else {
+    unset($_SESSION['update_status']);
+  }
+
+  // get cleaned POST data
   $update_name = clean_input($_POST['product_name']);
   $update_quantity = clean_input($_POST['quantity']);
   $update_price = clean_input($_POST['price']);
   $update_status = clean_input($_POST['status']);
 
 
-  // different queries based on form data
-  
-  // $query = "UPDATE suppliers INNER JOIN products ON suppliers.supplier_id = products.supplier_id WHERE (products.supplier_id = ? AND products.product_id = ?) SET products.product_name = ?, products.quantity = ?, products.product_price = ?, products.product_status = ?";
+  // query to update the database
   $query = "UPDATE products SET product_name = ?, quantity = ?, product_price = ?, product_status = ? WHERE (supplier_id = ? AND product_id = ?)";
   $result= $con->prepare($query);
   //bind the parameters

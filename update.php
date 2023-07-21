@@ -26,6 +26,13 @@
     $_SESSION["supplier_id"] = clean_input($_POST['supplier_id']); //get input text
     $_SESSION["product_id"] = clean_input($_POST['product_id']); //get input text
 
+    // validate input
+    if (empty($_SESSION["supplier_id"]) || empty($_SESSION["product_id"])) {
+      $output = "Please enter a valid supplier ID and product ID";
+    } else {
+      $output = "Valid input";
+    }
+
     $query = "SELECT product_id, product_name, quantity, product_price, product_status, supplier_name FROM suppliers INNER JOIN products ON suppliers.supplier_id = products.supplier_id WHERE (products.supplier_id = ? AND products.product_id = ?)";
     $result= $con->prepare($query);
     $result->bindParam(1, $_SESSION["supplier_id"], PDO::PARAM_STR);
@@ -42,8 +49,6 @@
     } else {
       $output = "Record not found";
     }
-    
-
   }
 
   
@@ -128,7 +133,7 @@
             <input type="text" name="status" value=<?php echo isset($_SESSION['product_status']) ? $_SESSION['product_status'] : "Status";?>>
           </div>
           <br>
-          
+          <?php echo isset($_SESSION['update_status']) ? $_SESSION['update_status'] : ""; ?>
           <input type="submit", value="Update Record">     
       </div>
 
