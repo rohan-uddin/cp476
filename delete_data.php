@@ -32,9 +32,13 @@
   try {
     $sql = "DELETE FROM products WHERE product_id=? AND supplier_id=?";
     $stmt= $con->prepare($sql);
-    //bind the parameters
-    $stmt->bindParam(1, $_POST['product_id']);
-    $stmt->bindParam(2, $_POST['supplier_id']);
+    
+    //bind the parameters but clean them up first
+    $p_id = clean_input($_POST['product_id']);
+    $s_id = clean_input($_POST['supplier_id']);
+
+    $stmt->bindParam(1, $p_id, PDO::PARAM_STR);
+    $stmt->bindParam(2, $s_id, PDO::PARAM_STR);
     //execute the prepared statement
     $stmt->execute();
   } catch (PDOException $e) {
@@ -49,6 +53,14 @@
   $query2 = "SELECT * FROM products";
   $result2 = $con->query($query2);
 
+
+  // function to clean POST data
+  function clean_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
 ?>
 <!DOCTYPE html>
 <html>
