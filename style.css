@@ -213,6 +213,67 @@ table {
   transition: background-color 0.2s;
 }
 
+/* Styles for the update form */
+.update {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.update .box {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+}
+
+.update form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 20px;
+}
+.update form label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 50px;
+  background-color: #f0f0f0;
+  /* color: #ffffff; */
+  padding: 0 5px;
+}
+.update form input[type="text"] {
+  width: 310px;
+  height: 50px;
+  border: 1px solid #dee0e4;
+  margin-bottom: 20px;
+  padding: 0 5px;
+}
+
+.update form select {
+  width: 310px;
+  height: 50px;
+  border: 1px solid #dee0e4;
+  margin-bottom: 20px;
+  padding: 0 5px;
+}
+
+.update form input[type="submit"] {
+  /* width: 500px; */
+  padding: 15px;
+  margin-top: 5px;
+  background-color: #f0f0f0;
+  border: 0;
+  cursor: pointer;
+  font-weight: bold;
+  color: #000;
+  transition: background-color 0.2s;
+}
+.update form input[type="submit"]:hover {
+  background-color: #a5dfc0;
+  transition: background-color 0.2s;
+}
+
 button {
   padding: 15px;
   margin-top: 10px;
