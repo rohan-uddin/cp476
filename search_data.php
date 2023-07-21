@@ -22,7 +22,9 @@
     // exit('Failed to connect to MySQL: ' . $e->getMessage());
   }
 
-  // data validation
+  // get cleaned POST data
+  $product_id = clean_input($_POST['product_id']);
+  $supplier_id = clean_input($_POST['supplier_id']);
 
 
   // different queries based on form data
@@ -33,7 +35,7 @@
     $query = "SELECT product_id, product_name, quantity, product_price, product_status, supplier_name FROM suppliers INNER JOIN products ON suppliers.supplier_id = products.supplier_id WHERE products.product_id = ?";
     $result= $con->prepare($query);
     //bind the parameters
-    $result->bindParam(1, $_POST['product_id']);
+    $result->bindParam(1, $product_id, PDO::PARAM_STR);
     //execute the prepared statement
     $result->execute();
 
@@ -42,7 +44,7 @@
     $query = "SELECT product_id, product_name, quantity, product_price, product_status, supplier_name FROM suppliers INNER JOIN products ON suppliers.supplier_id = products.supplier_id WHERE products.supplier_id = ?";
     $result= $con->prepare($query);
     //bind the parameters
-    $result->bindParam(1, $_POST['supplier_id']);
+    $result->bindParam(1, $supplier_id, PDO::PARAM_STR);
     //execute the prepared statement
     $result->execute();
 
@@ -51,8 +53,8 @@
     $query = "SELECT product_id, product_name, quantity, product_price, product_status, supplier_name FROM suppliers INNER JOIN products ON suppliers.supplier_id = products.supplier_id WHERE (products.supplier_id = ? AND products.product_id = ?)";
     $result= $con->prepare($query);
     //bind the parameters
-    $result->bindParam(1, $_POST['supplier_id']);
-    $result->bindParam(2, $_POST['product_id']);
+    $result->bindParam(1, $supplier_id, PDO::PARAM_STR);
+    $result->bindParam(2, $product_id, PDO::PARAM_STR);
     //execute the prepared statement
     $result->execute();
 
@@ -60,6 +62,14 @@
   } else {
     $_SESSION['status'] = "Something went wrong";
     header('Location: search.php');
+  }
+
+  // function to clean POST data
+  function clean_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
   }
 ?>
 <!DOCTYPE html>
