@@ -76,14 +76,15 @@ if (!isset($_SESSION['loggedin'])) {
 
         <!-- sets up navigation -->
         <form class="options">
+            <input type="button" onclick="location.href = 'calc_inventories.php';" value="Get Inventory Status"><br>
+            <br>
             <input type="button" onclick="location.href = 'search.php';" value="View Product/Supplier Information"><br>
             <br>
             <input type="button" onclick="location.href = 'update.php';" value="Update Product/Supplier Information"><br>
             <br>
             <input type="button" onclick="location.href = 'delete.php';" value="Delete Product/Supplier Information"><br>
             <br>
-            <input type="button" onclick="location.href = 'calc_inventories.php';" value="Get Inventory Status"><br>
-            <br>
+            
             <input type="button" onclick="location.href = 'logout.php';" value="Logout">
         </form>
 		</div>

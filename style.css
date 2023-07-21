@@ -113,19 +113,20 @@ input[type=button] {
   appearance:none;
   -webkit-appearance:none;
 
-  /* usual styles */
-  padding:20px;
-  border:none;
-  background-color:#a5dfc0;
-  color:#fff;
-  font-weight:600;
-  border-radius:5px;
-  width:50%;
+  width: 50%;
+  padding: 15px;
+  margin-top: 10px;
+  background-color: #f0f0f0;
+  border: 0;
+  cursor: pointer;
+  font-weight: bold;
+  color: #000;
+  transition: background-color 0.2s;
 }
 
 input[type=button]:hover {
-  background-color:#5bb08f;
-  cursor:pointer;
+  background-color: #a5dfc0;
+  transition: background-color 0.2s;
 }
 
 .init {
@@ -141,10 +142,89 @@ input[type=button]:hover {
   font-weight:600;
   border-radius:5px;
   text-decoration: none;
-  margin: 5px 0;
+  margin: 10px 0;
 }
 
 .init:hover {
   background-color:#5bb08f;
   cursor:pointer;
+  transition: background-color 0.2s;
+}
+
+table {
+  margin: 0 auto;
+}
+
+.table_container {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  justify-content: space-around;
+  padding: 1em;
+}
+
+.table1, .table2 {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styles for the delete form */
+.delete {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.delete form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 20px;
+}
+.delete form label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 50px; */
+  height: 50px;
+  background-color: #f0f0f0;
+  /* color: #ffffff; */
+  padding: 0 5px;
+}
+.delete form input[type="text"] {
+  width: 310px;
+  height: 50px;
+  border: 1px solid #dee0e4;
+  margin-bottom: 20px;
+  padding: 0 5px;
+}
+.delete form input[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+  background-color: #f0f0f0;
+  border: 0;
+  cursor: pointer;
+  font-weight: bold;
+  color: #000;
+  transition: background-color 0.2s;
+}
+.delete form input[type="submit"]:hover {
+  background-color: #a5dfc0;
+  transition: background-color 0.2s;
+}
+
+button {
+  padding: 15px;
+  margin-top: 10px;
+  background-color: #f0f0f0;
+  border: 0;
+  cursor: pointer;
+  font-weight: bold;
+  color: #000;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #a5dfc0;
+  transition: background-color 0.2s;
 }
