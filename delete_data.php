@@ -32,7 +32,7 @@
   try {
     $sql = "DELETE FROM products WHERE product_id=? AND supplier_id=?";
     $stmt= $con->prepare($sql);
-    
+
     //bind the parameters but clean them up first
     $p_id = clean_input($_POST['product_id']);
     $s_id = clean_input($_POST['supplier_id']);
@@ -83,31 +83,6 @@
 			<hr/>
       <h2>Row deleted. Data now looks like:</h2>
       <div class="table_container">
-        <div class="table1">
-          <h3>Suppliers table:</h3>
-          <table border="1" cellspacing="2" cellpadding="2">
-            <tr>
-              <th>Supplier ID</th>
-              <th>Supplier Name</th>
-              <th>Supplier Address</th>
-              <th>Phone</th>
-              <th>Email</th>
-            </tr>
-            <?php while($rows=$result->fetch(PDO::FETCH_ASSOC)) { ?>
-              <tr>
-                <td><?php echo $rows['supplier_id']; ?></td>
-                <td><?php echo $rows['supplier_name']; ?></td>
-                <td><?php echo $rows['supplier_address']; ?></td>
-                <td><?php echo $rows['phone']; ?></td>
-                <td><?php echo $rows['email']; ?></td>
-              </tr>
-            <?php } ?>
-          </table>
-          <!-- echo row count here -->
-          <br/>
-          <p>Number of rows (Suppliers): <?php echo $result->rowCount(); ?></p>
-        </div>
-
         <div class="table2">
           <h3>Products table:</h3>
           <table border="1" cellspacing="2" cellpadding="2">

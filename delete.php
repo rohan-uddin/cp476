@@ -49,31 +49,6 @@
       <br/>
 			<hr/>
       <div class="table_container">
-        <div class="table1">
-          <h3>Suppliers table:</h3>
-          <table border="1" cellspacing="2" cellpadding="2">
-            <tr>
-              <th>Supplier ID</th>
-              <th>Supplier Name</th>
-              <th>Supplier Address</th>
-              <th>Phone</th>
-              <th>Email</th>
-            </tr>
-            <?php while($rows=$result->fetch(PDO::FETCH_ASSOC)) { ?>
-              <tr>
-                <td><?php echo $rows['supplier_id']; ?></td>
-                <td><?php echo $rows['supplier_name']; ?></td>
-                <td><?php echo $rows['supplier_address']; ?></td>
-                <td><?php echo $rows['phone']; ?></td>
-                <td><?php echo $rows['email']; ?></td>
-              </tr>
-            <?php } ?>
-          </table>
-          <!-- echo row count here -->
-          <br/>
-          <p>Number of rows (Suppliers): <?php echo $result->rowCount(); ?></p>
-        </div>
-
         <div class="table2">
           <h3>Products table:</h3>
           <table border="1" cellspacing="2" cellpadding="2">
@@ -106,14 +81,12 @@
       <!-- user enters supplier id / product id to delete that element -->
       <div class="delete">
         <form action="delete_data.php" method="post">
-          <label for="html">Supplier ID</label>
-          <input type="text" id="supplier_id" name="supplier_id">
-          <br>
-
           <label for="html">Product ID</label>
           <input type="text" id="product_id" name="product_id">
           <br>
-
+          <label for="html">Supplier ID</label>
+          <input type="text" id="supplier_id" name="supplier_id">
+          <br>
           <input type="submit", value="Delete Item">
         </form>      
       </div>
